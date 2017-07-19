@@ -1,0 +1,27 @@
+group 'com.github.dlopuch'
+version '1.0-SNAPSHOT'
+
+// Build fatjars (bundle all dependencies into single executable jar)
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.0'
+    }
+}
+
+apply plugin: 'com.github.johnrengelman.shadow'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile 'com.pi4j:pi4j-core:1.1'
+}

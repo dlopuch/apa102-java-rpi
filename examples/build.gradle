@@ -1,0 +1,29 @@
+// Build fatjars (bundle all dependencies into single executable jar)
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.0'
+    }
+}
+
+apply plugin: 'com.github.johnrengelman.shadow'
+
+apply plugin: 'java'
+sourceCompatibility = 1.8
+
+apply plugin: 'application'
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile project(':library')
+}
+
+// Define the main class for the application
+mainClassName = 'com.github.dlopuch.apa102_java_rpi.examples.RainbowStrip'

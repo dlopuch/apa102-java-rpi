@@ -1,0 +1,4 @@
+rootProject.name = 'apa102-java-rpi'
+
+include ':library', ':examples'
+
