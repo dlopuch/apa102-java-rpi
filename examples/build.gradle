@@ -1,3 +1,6 @@
+group 'com.github.dlopuch.apa102_java_rpi'
+version '1.0-SNAPSHOT'
+
 // Build fatjars (bundle all dependencies into single executable jar)
 buildscript {
     repositories {
@@ -19,6 +22,9 @@ apply plugin: 'application'
 repositories {
     mavenCentral()
 }
+
+jar.baseName = 'apa102-java-rpi-examples'
+shadowJar.baseName = jar.baseName;
 
 dependencies {
     // testCompile group: 'junit', name: 'junit', version: '4.12'
