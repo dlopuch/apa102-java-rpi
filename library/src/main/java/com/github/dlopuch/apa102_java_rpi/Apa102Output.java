@@ -158,7 +158,19 @@ public class Apa102Output {
       ledBuffer[ i + 1 + colorOrder.getBlue()  ] = rgbTriplets[ colorI++ ];
     }
 
-    spi.write(ledBuffer);
+    // Simple case: all in one write
+    if (ledBuffer.length < SpiDevice.MAX_SUPPORTED_BYTES) {
+      spi.write(ledBuffer);
+      return;
+    }
+
+    // Multiple writes:
+    int startI = 0;
+    while (startI <= ledBuffer.length) {
+      spi.write(ledBuffer, startI, SpiDevice.MAX_SUPPORTED_BYTES);
+
+      startI += SpiDevice.MAX_SUPPORTED_BYTES;
+    }
 
   }
 
