@@ -31,7 +31,7 @@ while (true) {
 See [examples/RainbowStrip](https://github.com/dlopuch/apa102-java-rpi/blob/master/examples/src/main/java/com/github/dlopuch/apa102_java_rpi/examples/RainbowStrip.java) for a full example.
 
 Note that `byte`'s in java are only signed -- APA102's are controlled with values 0-255, but in java bytes are valued
--127 - 127. This can make working with bytes unintuitive to the uninitiated.
+-128 - 127. This can make working with bytes unintuitive to the uninitiated.
 See [examples/BytesInJava](https://github.com/dlopuch/apa102-java-rpi/blob/master/examples/src/main/java/com/github/dlopuch/apa102_java_rpi/examples/BytesInJava.java)
 for a primer.
 
