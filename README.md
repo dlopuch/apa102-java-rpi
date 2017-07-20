@@ -1,7 +1,10 @@
 # apa102-java-rpi
 Raspi/Odroid SPI driver lib for APA-102's, using [Pi4j](http://pi4j.com/) to do all the hard SPI control stuff.
 
-Control APA-102 LED strips directly from a Raspi without any additional hardware (no pixelpushers, no fadecandy, etc.)
+Control APA-102 LED strips directly from a Raspi without any additional hardware -- no pixelpushers, no fadecandy, etc.
+(level shifters to bring the 3.3V raspi up to 5V APA102 signalling are recommended, but not necessary for small runs).
+
+For use with Java-based LED art like Processing or [LX](https://github.com/heronarts/LX).
 
 To use:
 
@@ -51,10 +54,12 @@ First, wire up your APA-102 and raspi like so:
 
 Note: The Raspberry Pi is a 3.3V device, while the APA-102's are 5V devices. You CAN connect the 3.3V **signal** lines directly
 to the 5V APA's, and it will generally work if the wire or strip runs aren't so long that they cause enough of a voltage
-drop that drops the 3.3V signal below the signaling threshold.
+drop that the 3.3V signal drops below the 5V signaling threshold.
 
 The real way of doing this though is to use a level shifter like a 74AHCT125 or 74AHC125 for both the `SCLK` and `MOSI`
 lines.  For a small piece of art, you can drive the signal directly.
+
+In a pinch, you can use a single APA-102 "dummy pixel"/repeater close to the raspi as a good-enough level shifter.
 
 ## Raspi Config
 
