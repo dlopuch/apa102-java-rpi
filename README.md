@@ -1,6 +1,8 @@
 # apa102-java-rpi
 Raspi/Odroid SPI driver lib for APA-102's, using [Pi4j](http://pi4j.com/) to do all the hard SPI control stuff.
 
+Control APA-102 LED strips directly from a Raspi without any additional hardware (no pixelpushers, no fadecandy, etc.)
+
 To use:
 
 ```java
@@ -19,7 +21,12 @@ while (true) {
 }
 ```
 
-See [RainbowStrip](https://github.com/dlopuch/apa102-java-rpi/blob/master/examples/src/main/java/com/github/dlopuch/apa102_java_rpi/examples/RainbowStrip.java) for a full example.
+See [examples/RainbowStrip](https://github.com/dlopuch/apa102-java-rpi/blob/master/examples/src/main/java/com/github/dlopuch/apa102_java_rpi/examples/RainbowStrip.java) for a full example.
+
+Note that `byte`'s in java are only signed -- APA102's are controlled with values 0-255, but in java bytes are valued
+-127 - 127. This can make working with bytes unintuitive to the uninitiated.
+See [examples/BytesInJava](https://github.com/dlopuch/apa102-java-rpi/blob/master/examples/src/main/java/com/github/dlopuch/apa102_java_rpi/examples/BytesInJava.java)
+for a primer.
 
 # Compile Jar
 This project is configured to make a fatjar so all dependencies are included in a single executable.
@@ -82,3 +89,11 @@ root@raspi.local $  sudo java -jar apa102-java-rpi-examples-1.0-all.jar
 
 If all is well, you should be seeing some rainbow blinky-blinks!
 
+# See Also
+
+- APA Signaling Protocol:
+  - [Summary on endframe signalling](https://hackaday.com/2014/12/09/digging-into-the-apa102-serial-led-protocol/)
+  - [Endframe signalling details](https://cpldcpu.com/2014/11/30/understanding-the-apa102-superled/)
+- Previous work / other libs:
+  - Python driver and lots of good documentation: [tinue/APA102_Pi](https://github.com/tinue/APA102_Pi)
+  - C++ driver: [leonyuhanov/rpi_apa102driver](https://github.com/leonyuhanov/rpi_apa102driver)
