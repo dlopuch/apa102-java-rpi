@@ -10,6 +10,6 @@ To package as a jar and run:
 ../gradlew shadowjar
 ```
 
-Jar is available at `apa102-java-rpi-examples-1.0-all.jar`
+Jar is available at `apa102-java-rpi-examples-1.x-SNAPSHOT-all.jar`
 
-Put it on your raspi and run with `sudo java -jar apa102-java-rpi-examples-1.0-all.jar`
+Put it on your raspi and run with `sudo java -jar apa102-java-rpi-examples-1.x-SNAPSHOT-all.jar`

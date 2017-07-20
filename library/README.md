@@ -8,4 +8,4 @@ To package as a jar and use in your project:
 ../gradlew shadowjar
 ```
 
-Jar is available at `apa102-java-rpi-lib-1.0-all.jar`
+Jar is available at `apa102-java-rpi-lib-1.x-SNAPSHOT-all.jar`
