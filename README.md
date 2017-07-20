@@ -4,9 +4,13 @@ Raspi/Odroid SPI driver lib for APA-102's, using [Pi4j](http://pi4j.com/) to do 
 Control APA-102 LED strips directly from a Raspi without any additional hardware -- no pixelpushers, no fadecandy, etc.
 (level shifters to bring the 3.3V raspi up to 5V APA102 signalling are recommended, but not necessary for small runs).
 
-For use with Java-based LED art like Processing or [LX](https://github.com/heronarts/LX).
+For use with Java-based LED art like Processing or [LX](https://github.com/heronarts/LX) (example [LXOutput](https://github.com/star-cats/blinky-dome/blob/master/src/main/java/com/github/starcats/blinkydome/util/Apa102RpiOutput.java))
+
+![Rainbow Fade Demo][image-1]
 
 To use:
+
+Grab `dist/apa102-java-rpi-lib-1.0-all.jar` and stick it in your project.
 
 ```java
 Apa102Output.initSpi();
@@ -31,7 +35,7 @@ Note that `byte`'s in java are only signed -- APA102's are controlled with value
 See [examples/BytesInJava](https://github.com/dlopuch/apa102-java-rpi/blob/master/examples/src/main/java/com/github/dlopuch/apa102_java_rpi/examples/BytesInJava.java)
 for a primer.
 
-# Compile Jar
+# Compile Jar from Source
 This project is configured to make a fatjar so all dependencies are included in a single executable.
 
 To compile the `library` module and get a jar to use in your project:
@@ -39,11 +43,13 @@ To compile the `library` module and get a jar to use in your project:
 ```
 ./gradlew library:shadowJar
 
-cp library/build/libs/apa102-java-rpi-lib-1.0-SNAPSHOT-all.jar my/destination/project
+cp library/build/libs/apa102-java-rpi-lib-1.0-all.jar my/destination/project
 ```
 
 # Smoketest
 You can compile the `examples` project and get an executable jar that makes the obligatory rainbow fade.
+
+![Rainbow Fade Example Wiring][image-2]
 
 ## Raspi Hardware
 First, wire up your APA-102 and raspi like so:
@@ -72,7 +78,7 @@ Since this is java, you will also need a JDK.
 
 ## Software
 
-Compile the `examples/` project:
+Grab the `dist/apa102-java-rpi-examples-1.0-all.jar` jar, or compile the `examples/` project from source:
 
 ```
 ./gradlew examples:shadowJar
@@ -102,3 +108,7 @@ If all is well, you should be seeing some rainbow blinky-blinks!
 - Previous work / other libs:
   - Python driver and lots of good documentation: [tinue/APA102_Pi](https://github.com/tinue/APA102_Pi)
   - C++ driver: [leonyuhanov/rpi_apa102driver](https://github.com/leonyuhanov/rpi_apa102driver)
+
+
+[image-1]:	rainbow_demo.gif
+[image-2]:	rainbow_demo.png
