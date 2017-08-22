@@ -53,6 +53,7 @@ You can compile the `examples` project and get an executable jar that makes the 
 
 ## Raspi Hardware
 First, wire up your APA-102 and raspi like so:
+
 APA-102 | Connection | Notes
 ------- | ---------- | ------
 `+` | power supply `+5V` | **NOT** your raspi! (Your raspi can't source that much current, give your APA-102 a dedicated +5 source)
