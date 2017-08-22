@@ -65,7 +65,11 @@ drop that the 3.3V signal drops below the 5V signaling threshold.
 The real way of doing this though is to use a level shifter like a 74AHCT125 or 74AHC125 for both the `SCLK` and `MOSI`
 lines.  For a small piece of art, you can drive the signal directly.
 
-In a pinch, you can use a single APA-102 "dummy pixel"/repeater close to the raspi as a good-enough level shifter.
+In a pinch, you can use a single APA-102 "dummy pixel"/repeater close to the raspi as a good-enough level shifter
+(also called a ["booster pixel"](http://www.elec-tron.org/?page_id=1296)).
+
+The number of 3.3V-drivable pixels can also be affected by the SPI clock frequency.  By default the library initializes
+ to 7.8Mhz.  If you observe flickering down your line, you can try initializing SPI at 4Mhz or lower.
 
 ## Raspi Config
 

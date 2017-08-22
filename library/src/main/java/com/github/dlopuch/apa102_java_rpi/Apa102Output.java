@@ -24,13 +24,16 @@ public class Apa102Output {
   private ColorOrder colorOrder;
 
   /**
-   * Init the SPI controller using default bindings (15 MHz)
+   * Init the SPI controller using default bindings (7.8 MHz)
+   *
+   * If you observe flickering on longer runs, initializing with a slower speed like 4Mhz.
+   *
    * @throws IOException If can't open SPI (not a raspi or not running sudo)
    */
   public static void initSpi() throws IOException {
     initSpi(
         SpiChannel.CS0,
-        15700000, // rounds down to 15.6..., compare to SpiDevice.DEFAULT_SPI_SPEED
+        7800000, // see list of speeds at https://www.raspberrypi.org/documentation/hardware/raspberrypi/spi/README.md
         SpiDevice.DEFAULT_SPI_MODE
     );
   }
