@@ -15,7 +15,7 @@ Grab `dist/apa102-java-rpi-lib-1.0-all.jar` and stick it in your project.
 ```java
 Apa102Output.initSpi();
 // Could also init with non-defaults using #initSpi(SpiChannel spiChannel, int spiSpeed, SpiMode spiMode)
-// Default speed is 15 Mhz
+// Default speed is 7.8 Mhz
 
 Apa102Output strip = new Apa102Output(NUM_LEDS);
 
@@ -53,10 +53,15 @@ You can compile the `examples` project and get an executable jar that makes the 
 
 ## Raspi Hardware
 First, wire up your APA-102 and raspi like so:
-  - `+` --> power supply `+5V`, **NOT** your raspi! (Your raspi can't source that much current, give your APA-102 a dedicated +5 source)
-  - `CLK` --> raspi `SCLK`
-  - `DAT` --> raspi `MOSI`
-  - `GND` --> power supply `GND` *AND* raspi `GND` -- make a common ground
+APA-102 | Connection | Notes
+------- | ---------- | ------
+`+` | power supply `+5V` | **NOT** your raspi! (Your raspi can't source that much current, give your APA-102 a dedicated +5 source)
+`CLK` | raspi `SCLK` |
+`DAT` | raspi `MOSI` |
+`GND` | power supply `GND` **AND** raspi `GND` | **make a common ground**, even if connecting to different ports on the same battery pack!
+
+
+### 3.3V to 5V Level Shifting: Not Strictly Needed
 
 Note: The Raspberry Pi is a 3.3V device, while the APA-102's are 5V devices. You CAN connect the 3.3V **signal** lines directly
 to the 5V APA's, and it will generally work if the wire or strip runs aren't so long that they cause enough of a voltage
